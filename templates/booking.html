@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bus Booking</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(to right, #e3f2fd, #bbdefb);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .booking-container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            width: 90%;
+            max-width: 500px;
+        }
+        h2 {
+            color: #1976d2;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        label {
+            display: block;
+            margin-top: 15px;
+            color: #333;
+        }
+        input[type="text"], input[type="date"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #90caf9;
+            border-radius: 10px;
+            margin-top: 5px;
+        }
+        .bus-details {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        button {
+            background-color: #1976d2;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #1565c0;
+        }
+        .home-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .home-link a {
+            color: #1976d2;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="booking-container">
+        <h2>Confirm Your Booking</h2>
+        {% if bus %}
+        <div class="bus-details">
+            <p><strong>Bus Name:</strong> {{ bus.name }}</p>
+            <p><strong>Type:</strong> {{ bus.type }}</p>
+            <p><strong>Available Seats:</strong> {{ bus.seats }}</p>
+            <p><strong>Price:</strong> ₹{{ bus.price }}</p>
+        </div>
+        <form method="POST">
+            <label for="passenger_name">Passenger Name:</label>
+            <input type="text" name="passenger_name" required>
+
+            <label for="travel_date">Travel Date:</label>
+            <input type="date" name="travel_date" required>
+
+            <button type="submit">Book Now</button>
+        </form>
+        {% else %}
+        <p>Bus not found.</p>
+        {% endif %}
+        <div class="home-link">
+            <a href="/dashboard">← Back to Dashboard</a>
+        </div>
+    </div>
+</body>
+</html>

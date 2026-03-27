@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Booking Confirmation</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(to right, #fceabb, #f8b500);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .confirmation-box {
+            background: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            width: 90%;
+            max-width: 500px;
+        }
+        h2 {
+            color: #e65100;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 16px;
+            margin: 10px 0;
+        }
+        strong {
+            color: #bf360c;
+        }
+        .home-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .home-link a {
+            color: #e65100;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="confirmation-box">
+        <h2>Booking Confirmed!</h2>
+        <p><strong>PNR:</strong> {{ booking.pnr }}</p>
+        <p><strong>Passenger Name:</strong> {{ booking.passenger_name }}</p>
+        <p><strong>Travel Date:</strong> {{ booking.travel_date }}</p>
+        <p><strong>Bus Name:</strong> {{ bus.name }}</p>
+        <p><strong>Bus ID:</strong> {{ bus.id }}</p>
+        <p><strong>Seat Number:</strong> Assigned at Boarding</p>
+        <p><strong>Route:</strong> {{ bus.source }} → {{ bus.destination }}</p>
+        <p><strong>Bus Type:</strong> {{ bus.type }}</p>
+        <p><strong>Price:</strong> ₹{{ bus.price }}</p>
+        <div class="home-link">
+            <a href="/dashboard">← Back to Dashboard</a>
+        </div>
+    </div>
+</body>
+</html>

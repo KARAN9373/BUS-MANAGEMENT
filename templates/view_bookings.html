@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Bookings</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: url('{{ url_for('static', filename='bus_bg1.jpg') }}') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+        }
+
+        .container {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 40px;
+            margin: 50px auto;
+            max-width: 1000px;
+            border-radius: 15px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #ffeb3b;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            color: #333;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 15px;
+            border-bottom: 1px solid #ccc;
+            text-align: left;
+        }
+
+        th {
+            background-color: #1976d2;
+            color: white;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .home-link {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .home-link a {
+            color: #ffeb3b;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>All Bookings</h2>
+        {% if bookings %}
+        <table>
+            <tr>
+                <th>PNR</th>
+                <th>Bus Name</th>
+                <th>Bus ID</th>
+                <th>Type</th>
+                <th>Source</th>
+                <th>Destination</th>
+                <th>Passenger</th>
+                <th>Travel Date</th>
+            </tr>
+            {% for booking in bookings %}
+            <tr>
+                <td>{{ booking.pnr }}</td>
+                <td>{{ booking.bus_name }}</td>
+                <td>{{ booking.bus_id }}</td>
+                <td>{{ booking.type }}</td>
+                <td>{{ booking.source }}</td>
+                <td>{{ booking.destination }}</td>
+                <td>{{ booking.passenger_name }}</td>
+                <td>{{ booking.travel_date }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% else %}
+        <p style="text-align: center;">No bookings yet.</p>
+        {% endif %}
+        <div class="home-link">
+            <a href="/dashboard">← Back to Dashboard</a>
+        </div>
+    </div>
+</body>
+</html>

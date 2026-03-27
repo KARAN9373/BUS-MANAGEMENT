@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Select Route</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(to right, #4facfe, #00f2fe);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #fff;
+        }
+        .route-container {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 30px 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            animation: fadeIn 1s ease;
+        }
+        h2 {
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+        select {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0 25px 0;
+            border-radius: 10px;
+            border: none;
+            font-size: 16px;
+        }
+        button {
+            background-color: #00f2fe;
+            color: #000;
+            padding: 12px 0;
+            width: 100%;
+            font-size: 18px;
+            font-weight: 700;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #4facfe;
+            color: #fff;
+        }
+        @keyframes fadeIn {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+    </style>
+</head>
+<body>
+    <div class="route-container">
+        <h2>Select Your Route</h2>
+        <form method="POST">
+            <select name="source" required>
+                <option value="" disabled selected>Select Source City</option>
+                <option>Delhi</option>
+                <option>Mumbai</option>
+                <option>Bangalore</option>
+                <option>Kolkata</option>
+                <option>Chennai</option>
+                <option>Hyderabad</option>
+                <option>Pune</option>
+                <option>Ahmedabad</option>
+                <option>Jaipur</option>
+                <option>Lucknow</option>
+            </select>
+
+            <select name="destination" required>
+                <option value="" disabled selected>Select Destination City</option>
+                <option>Delhi</option>
+                <option>Mumbai</option>
+                <option>Bangalore</option>
+                <option>Kolkata</option>
+                <option>Chennai</option>
+                <option>Hyderabad</option>
+                <option>Pune</option>
+                <option>Ahmedabad</option>
+                <option>Jaipur</option>
+                <option>Lucknow</option>
+            </select>
+
+            <button type="submit">Show Available Buses</button>
+        </form>
+    </div>
+</body>
+</html>

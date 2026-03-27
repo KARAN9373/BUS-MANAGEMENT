@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cancel Ticket</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: url('{{ url_for('static', filename='bus_cancel_bg.jpg') }}') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #fff;
+        }
+
+        .cancel-container {
+            background: rgba(0, 0, 0, 0.75);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            max-width: 400px;
+            width: 90%;
+            animation: slideUp 1s ease;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #ff5252;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #ff5252;
+            color: #fff;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background-color: #e53935;
+        }
+
+        .home-link {
+            margin-top: 20px;
+        }
+
+        .home-link a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="cancel-container">
+        <h2>Cancel Your Ticket</h2>
+        <form method="POST">
+            <input type="text" name="pnr" placeholder="Enter your PNR" required>
+            <button type="submit">Cancel Ticket</button>
+        </form>
+        {% if message %}
+            <p>{{ message }}</p>
+        {% endif %}
+        <div class="home-link">
+            <a href="/dashboard">← Back to Dashboard</a>
+        </div>
+    </div>
+</body>
+</html>

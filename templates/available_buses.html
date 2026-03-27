@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Available Buses</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(to right, #e0f7fa, #b2ebf2);
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #00796b;
+        }
+        .bus-card {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 10px;
+            background-color: #f1f8e9;
+            box-shadow: 2px 2px 6px rgba(0,0,0,0.05);
+        }
+        .bus-card h2 {
+            margin: 0 0 10px;
+            color: #388e3c;
+        }
+        .bus-card p {
+            margin: 4px 0;
+        }
+        .btn {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background: #00796b;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            text-decoration: none;
+            display: inline-block;
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background: #004d40;
+        }
+        .back {
+            text-align: center;
+            margin-top: 20px;
+            display: block;
+            color: #444;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Available Buses from {{ source }} to {{ destination }}</h1>
+
+        {% if buses %}
+            {% for bus in buses %}
+            <div class="bus-card">
+                <h2>{{ bus.name }}</h2>
+                <p><strong>Type:</strong> {{ bus.type }}</p>
+                <p><strong>Seats Available:</strong> {{ bus.seats }}</p>
+                <p><strong>Price:</strong> ${{ bus.price }}</p>
+               <a href="{{ url_for('book', bus_id=bus.id) }}" class="btn">Book</a>
+
+            </div>
+            {% endfor %}
+        {% else %}
+            <p>No buses available for this route.</p>
+        {% endif %}
+
+        <a href="{{ url_for('dashboard') }}" class="back">← Back to Dashboard</a>
+    </div>
+</body>
+</html>
